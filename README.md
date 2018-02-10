@@ -11,13 +11,13 @@
 
 
 
-1. 在projects 目录下以项目名字新建目录:
+## . 在projects 目录下以项目名字新建目录:
     ```
     cd projects
     mkdir xcc_sdks
     ```
 
-2. 新建文件 hosts 和 projectname-vars.yml
+## . 新建文件 hosts 和 vars.yml
 
     hosts: 内含要发布的主机列表
     ```
@@ -33,9 +33,8 @@
     ```
     可以管理多组不同环境的主机列表。 develop 和tesing 为每组的主机名
 
+##    vars.yaml
 
-   projectname-vars.yml 为项目的一些不轻易改动的信息，例如git 仓库地址,
-   项目部署到的位置, 目前只需要填写几个变量：
    ```
    project_name: "xcc_sdks"
    deploy_to: "/data/htdocs"
@@ -50,7 +49,7 @@
    * after_rg   在安装后执行的rg 指令
    * after_cmd  在安装后执行的shell 脚本
 
-3. 使用方法
+##. 使用方法
 
  ```
  rocket_pub.sh --prj xcc_sdk --tag 0.0.1 --host develop
