@@ -1,0 +1,13 @@
+# control the project
+# may reload the nginx or reload some service
+---
+- name: rigger conf
+  command:   /data/x/tools/rigger-ng/rg {{ after_rg }} chdir={{ deploy_to }}/{{ deploy_name }}
+  become: yes
+  become_user: root
+  when: after_rg is defined and after_rg  != ''
+
+#Add server
+#- name: Add backend servers
+#  shell: python loadbalancer/addServer.py {{ project_name }} {{ server_hostname.stdout }} {{ conf }}
+#  delegate_to: 127.0.0.1

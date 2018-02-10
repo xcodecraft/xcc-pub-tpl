@@ -1,0 +1,38 @@
+---
+# Performs symlink exchange
+- stat: path={{ deploy_to }}/{{ deploy_name }}
+  become: yes
+  become_user: %{RUN_USER}
+  register: st
+
+- name: execute *before rg *
+  command: python  /data/x/tools/rigger-ng/rg {{ before_rg }} chdir={{ deploy_to }}/{{ deploy_name }}
+  become: yes
+  become_user: root
+  when: st.stat.islnk is defined and  before_rg is defined and before_rg != ''
+
+- name: Change softlink to new release
+  file: state=link path={{ deploy_to }}/{{ deploy_name }} src="{{ release_path.stdout }}/{{ project_version }}"
+  become: yes
+  become_user: %{RUN_USER}
+  when: export_path is not defined
+
+
+- name: Change softlink to specific_path
+  file: state=link path={{ deploy_to }}/{{ deploy_name }} src="{{ release_path.stdout }}/{{ project_version }}/{{ export_path }}"
+  become: yes
+  become_user: %{RUN_USER}
+  when: export_path is defined and export_path !=''
+
+- name: execute shell command *after cmd*
+  command: /bin/sh  {{ after_cmd }} chdir="{{ deploy_to }}/{{ deploy_name }}"
+  become: yes
+  become_user: root
+  when: after_cmd is defined and after_cmd != ''
+
+
+- name: execute  after_rg
+  command: python  /data/x/tools/rigger-ng/rg {{ after_rg }} chdir={{ deploy_to }}/{{ deploy_name }}
+  become: yes
+  become_user: root
+  when: after_rg is defined and after_rg != ''

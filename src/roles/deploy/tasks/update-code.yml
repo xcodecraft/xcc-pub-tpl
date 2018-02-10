@@ -1,0 +1,24 @@
+---
+# Update code deployment step
+- name:  Get release path
+  command: echo "{{ deploy_to }}/pkgs/{{ deploy_name }}"
+  register: release_path
+
+
+- name: Make sure local pkgs dir exists
+  file: state=directory recurse=yes path={{local_path}}/pkgs/{{ project_name }}
+  delegate_to: 127.0.0.1
+
+- name: Make sure local procjec tdir exists
+  file: state=directory recurse=yes path={{local_path}}/{{ project_name }}
+  delegate_to: 127.0.0.1
+
+
+- name: git archive pkgs code
+  shell: git archive --format=tar {{ project_version}} --output  {{ local_path }}/pkgs/{{ project_name }}/{{ project_version }}.tar.gz chdir={{ local_path }}/{{ project_name }}
+  delegate_to: 127.0.0.1
+
+- name: extract pkgs
+  unarchive: src={{ local_path}}/pkgs/{{project_name}}/{{ project_version }}.tar.gz dest={{ release_path.stdout }}/{{ project_version }} copy=yes
+  become: yes
+  become_user: %{RUN_USER}

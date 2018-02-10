@@ -1,0 +1,8 @@
+PRJ_NAME: !T.input
+    prompt : "Please input project name"
+
+RUN_USER : !T.input
+    prompt : " system run user, such as 'xcc' !"
+
+GIT: !T.input
+    prompt : "git path"

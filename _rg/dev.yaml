@@ -1,0 +1,10 @@
+# from default Template
+_dev:
+    - !C.project
+        name : "%{PRJ_NAME}"
+        root : "${HOME}/devspace/%{PRJ_NAME}"
+    - !C.version
+        file : "version.txt"
+    - !C.git
+        remote : "%{GIT}"
+

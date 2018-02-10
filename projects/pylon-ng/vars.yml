@@ -1,0 +1,4 @@
+deploy_to: "/data/x/libs"
+git_repo: 'git@github.com:xcodecraft/pylon-ng.git'
+export_path: 'src'
+after_cmd :  '/data/x/libs/pylon-ng/modules/setup.sh'

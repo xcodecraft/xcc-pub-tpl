@@ -1,0 +1,4 @@
+deploy_to : "/data/x/tools"
+git_repo  : 'git@git.xcodecraft.cn:env/xcc_pub.git'
+before_rg : "clean"
+after_rg  : "conf -e work -s init"

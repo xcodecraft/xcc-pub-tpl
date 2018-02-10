@@ -1,0 +1,4 @@
+deploy_to: "/data/x/tools"
+git_repo: 'git@github.com:xcodecraft/rigger-ng.git'
+export_path: 'src'
+after_cmd :  '/data/x/tools/rigger-ng/setup.sh  /data/x/tools/rigger-ng/rg_envs/centos_mara.py'

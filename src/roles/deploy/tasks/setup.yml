@@ -1,0 +1,25 @@
+---
+# Remove server
+- name:  Get backend server's hostname
+  command: hostname
+  register: server_hostname
+
+#- name: Remove backend servers
+#  shell: python loadbalancer/removeServer.py {{ project_name }} {{ server_hostname.stdout }} {{ conf }}
+#  delegate_to: 127.0.0.1
+
+# Prepare folders
+- name:  Ensure deployment base path exists
+  file: state=directory recurse=no path={{ deploy_to }}
+  become: yes
+  become_user: %{RUN_USER}
+
+- name:  Ensure project folder exists
+  file: state=directory recurse=yes path={{ deploy_to }}/pkgs/{{ deploy_name }}
+  become: yes
+  become_user: %{RUN_USER}
+
+- name:  Ensure each project version folder exists
+  file: state=directory recurse=yes path={{ deploy_to }}/pkgs/{{ deploy_name }}/{{ project_version}}
+  become: yes
+  become_user: %{RUN_USER}
