@@ -11,28 +11,27 @@
 
 
 
-## . 在projects 目录下以项目名字新建目录:
+## . 在plans 下建立发布计划
     ```
-    cd projects
+    cd plans
     mkdir xcc_sdks
     ```
 
-## . 新建文件 hosts 和 vars.yml
+## . 新建或复用hosts 
 
-    hosts: 内含要发布的主机列表
+    hosts: 内含以环境为组的主机列表
     ```
-    [develop]
+    [dev]
         ip1
         ip2
         ...
 
-    [testing]
+    [test]
         ip1
         ip2
         ...
     ```
-    可以管理多组不同环境的主机列表。 develop 和tesing 为每组的主机名
-
+dev,test为环境名称
 ##    vars.yaml
 
    ```
@@ -52,10 +51,8 @@
 ##. 使用方法
 
  ```
- rocket_pub.sh --prj xcc_sdk --tag 0.0.1 --host develop
+ rocket_pub.sh --plan xcc_sdk --tag 0.0.1 --env dev
 
-alias rocket_pub.sh=rocket
  ```
 
-    通过extra-var 传递每次发布可能需要变化的参数。传递与vars.yml 同名的变量，会覆盖vars.yml 里面的变量。
-
+ 通过extra-var 传递每次发布可能需要变化的参数。传递与vars.yml 同名的变量，会覆盖vars.yml 里面的变量。
