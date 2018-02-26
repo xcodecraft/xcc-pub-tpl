@@ -1,3 +1,4 @@
+project_name: "%{PRJ_NAME}"
 deploy_to : "/data/x/tools"
 git_repo  : '%{GIT}'
 before_rg : "clean"

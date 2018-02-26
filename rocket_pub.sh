@@ -3,15 +3,11 @@ CUR_DIR=$(cd "$(dirname "$0")"; pwd)
 cd $CUR_DIR
 
 function usage() {
-    echo "usage: $0  --plan  plan_name   --tag project_tag  [ --env  env_name] [ --dver  deploy_ver]  --host host_list(develop|testing|production)  "
+    echo "usage: $0  --plan  plan_name   --tag project_tag   --env  env_name [ --dver  deploy_ver]  
     }
 
 while [ "$1" != "" ]; do
     case $1 in
-        --prj )           shift
-                           project_name=$1
-                           ;;
-
         --plan )           shift
                            plan_name=$1
                            ;;
@@ -21,10 +17,7 @@ while [ "$1" != "" ]; do
 
         --env )            shift
                            env_name=$1
-                           ;;
-
-        --host )           shift
-                           host_list=${1:-'develop'}
+                           host_list=$1
                            ;;
 
         --dver )           shift
@@ -40,10 +33,6 @@ while [ "$1" != "" ]; do
 done
 
 host_list=${host_list:-'develop'}
-
-if [ "$plan_name" = "" ] ; then
-    plan_name=$project_name
-fi
 
 if [ "$env_name" = "" ] ; then
     env_name=$host_list
