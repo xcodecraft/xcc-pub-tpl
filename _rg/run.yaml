@@ -18,5 +18,11 @@ _sys:
         _name : "init"
         _res  :
             - !R.link
-                dst : "${PRJ_ROOT}/projects/%{PRJ_NAME}/hosts"
-                src : "${PRJ_ROOT}/conf/all.hosts"
+                dst : "${PRJ_ROOT}/plans/%{PRJ_NAME}/hosts"
+                src : "${PRJ_ROOT}/hosts/all.hosts"
+            - !R.link
+                dst : "${PRJ_ROOT}/plans/rigger-ng/hosts"
+                src : "${PRJ_ROOT}/hosts/all.hosts"
+            - !R.link
+                dst : "${PRJ_ROOT}/plans/pylon-ng/hosts"
+                src : "${PRJ_ROOT}/hosts/all.hosts"

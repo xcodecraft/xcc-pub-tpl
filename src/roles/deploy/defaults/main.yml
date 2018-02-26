@@ -1,6 +1,6 @@
 ---
 # Path where the code must be deployed to
- deploy_to: "/tmp/"
- deploy_name : "{{project_name}}{{deploy_ver}}"
- local_path: "/home/{{ user }}/devspace"
- keep_releases: 10
+deploy_to: "/tmp/"
+deploy_name : "{{project_name}}{{deploy_ver}}"
+local_path: "/home/{{ user }}/devspace"
+keep_releases: 10
