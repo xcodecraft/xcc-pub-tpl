@@ -34,10 +34,10 @@ class version_diff :
         p    = Popen(["ssh" , host,cmd], bufsize=1024, stdout=PIPE, close_fds=True)
         return p.stdout.readlines()
 def useage():
-    print "verdiff -h host1:host2 -p xcodecraft.cn"
+    print "verdiff -h host1:host2 -p %{DOMAIN}"
 
 if __name__ == '__main__':
-    postfix = ".aly.xcodecraft.cn"
+    postfix = ".${DOMAIN}"
     try :
         opts, args = getopt.getopt(sys.argv[1:], "h:p:")
     except getopt.GetoptError as err:

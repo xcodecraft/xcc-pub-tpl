@@ -22,10 +22,6 @@ while [ "$1" != "" ]; do
                            host_list=${1:-'dev'}
                            ;;
 
-        --env )            shift
-                           env_name=$1
-                           ;;
-
         -h | --help )      usage
                            exit
                            ;;
@@ -41,9 +37,6 @@ if [ "$plan_name" = "" ] ; then
     plan_name=$project_name
 fi
 
-if [ "$env_name" = "" ] ; then
-    env_name=$host_list
-fi
 if [  "$command" = "" ]; then
     usage
     exit

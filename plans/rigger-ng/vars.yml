@@ -1,4 +1,4 @@
-project_name: "rigger_ng"
+project_name: "rigger-ng"
 deploy_to: "/data/x/tools"
 git_repo: 'git@github.com:xcodecraft/rigger-ng.git'
 export_path: 'src'
