@@ -1,3 +1,4 @@
+project_name: "pylon-ng"
 deploy_to: "/data/x/libs"
 git_repo: 'git@github.com:xcodecraft/pylon-ng.git'
 export_path: 'src'
