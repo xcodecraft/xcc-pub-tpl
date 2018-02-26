@@ -3,10 +3,9 @@
 示例:通过xcc-pub-tpl 生成hero-pub　项目
 ``` shell
     git clone git@github.com:xcodecraft/xcc-pub-tpl.git
-    rg tpl -t ~/devspace/xcc-pub-tpl  -o ~/devspace/hero-pub
+    rg tpl -t ~/devspace/xcc-pub-tpl  -o ~/devspace/xcc-pub
 
 ```
-
 # 用法
 
 
@@ -14,20 +13,20 @@
 ## . 在plans 下建立发布计划
     ```
     cd plans
-    mkdir xcc_sdks
+    mkdir rigger-ng
     ```
 
 ###   vars.yaml
 
-   ```
-   project_name: "xcc_sdks"
+   ``` yaml
+   project_name: "rigger-ng"
    deploy_to: "/data/htdocs"
    ```
    可选项
-   ```
+   ``` yaml
    before_rg : "stop"
    after_rg  : "start -e {{env}} -s admin,api"
-   after_cmd : "/data/x/projects/<you-project>/setup.sh"
+   after_cmd : "/data/x/projects/rigger-ng/setup.sh"
    ```
    * before_rg  在实装前执行的rg 指令
    * after_rg   在安装后执行的rg 指令
@@ -37,7 +36,7 @@
 ### . 在hosts新建或复用hosts 
 
     hosts: 内含以环境为组的主机列表
-    ```
+    ``` ini
     [dev]
         ip1
         ip2
@@ -62,10 +61,10 @@ _sys:
                 src : "${PRJ_ROOT}/hosts/all.hosts"
 ```
 
-## 使用方法
+## 发布
 
- ```
- rocket_pub.sh --plan xcc_sdk --tag 0.0.1 --env dev
+ ``` shell
+ rocket_pub.sh --plan rigger-ng --tag 0.0.1 --env dev
 
  ```
 
